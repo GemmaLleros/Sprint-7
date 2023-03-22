@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+    <label>
+      <input type="checkbox" formControlName="web"> Fer una pàgina web (500 €)
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" formControlName="seo"> Fer una campanya SEO (300 €)
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" formControlName="ads"> Fer una campanya de publicitat (200 €)
+    </label>
+    <br>
+    <p>Preu total: {{ total }} €</p>
+  </form>
+  
+  <app-panell></app-panell>
