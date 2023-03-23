@@ -1,1 +1,14 @@
-<p>panell works!</p>
+<div class="form-container">
+    <form [formGroup]="form">
+        <div class="row mb-3">
+            <label for="pagNumber" class="col-sm-3 col-form-label">Número de páginas</label>
+            <div class="col-sm-6">
+                <div class="input-group align-items-center">
+                    <input type="text" class="form-control" id="inputPagNumber" formControlName="pages" min="1">
+                    <label for="pagNumber" class="col-sm-3 col-form-label">Número de idiomas</label>
+                    <input type="text" class="form-control" id="inputLanguagesNumber" formControlName="languages" min="1">
+                </div>
+            </div>
+        </div>
+    </form>
+</div> 

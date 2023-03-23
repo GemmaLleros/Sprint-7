@@ -5,5 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class BudgetService {
 
-  constructor() { }
+  public totalPrice: number = 0;
+  
+  calculateTotal(pn: number, ln: number): number {
+    this.totalPrice = pn * ln * 30;
+    return this.totalPrice;
+  }
 }
