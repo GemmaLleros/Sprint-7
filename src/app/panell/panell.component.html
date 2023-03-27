@@ -1,14 +1,25 @@
 <div class="form-container">
-    <form [formGroup]="form">
-        <div class="row mb-3">
-            <label for="pagNumber" class="col-sm-3 col-form-label">Número de páginas</label>
-            <div class="col-sm-6">
-                <div class="input-group align-items-center">
-                    <input type="text" class="form-control" id="inputPagNumber" formControlName="pages" min="1">
-                    <label for="pagNumber" class="col-sm-3 col-form-label">Número de idiomas</label>
-                    <input type="text" class="form-control" id="inputLanguagesNumber" formControlName="languages" min="1">
-                </div>
-            </div>
+  <form [formGroup]="form">
+    <div class="row mb-3">
+      <div class="col-sm-6">
+        <div class="align-items-center">
+        <label for="pagNumber" class="col-sm-3 text-end">Número de páginas</label>
+            <button class="btn btn-outline" type="button" (click)="sumar(pages)">+</button>
+            <input type="number" class="form-control" id="inputPagNumber" formControlName="pages" min="1">
+            <button class="btn btn-outline" type="button" (click)="restar(pages)">-</button>
+        </div><br>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <div class="align-items-center">
+          <label for="languagesNumber" class="col-sm-3 text-end">Número de idiomas</label>
+            <button class="btn btn-outline btn-lg" type="button" (click)="sumar(languages)">+</button>
+            <input type="number" class="form-control" id="inputLanguagesNumber" formControlName="languages" min="1">
+            <button class="btn btn-outline btn-lg" type="button" (click)="restar(languages)">-</button>
         </div>
-    </form>
-</div> 
+      </div>
+    </div>
+  </form>
+</div>
+

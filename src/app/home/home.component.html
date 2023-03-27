@@ -1,17 +1,26 @@
-<form [formGroup]="form">
-    <label>
-      <input type="checkbox" formControlName="web"> Fer una pàgina web (500 €)
-    </label>
-    <br>
-    <label>
-      <input type="checkbox" formControlName="seo"> Fer una campanya SEO (300 €)
-    </label>
-    <br>
-    <label>
-      <input type="checkbox" formControlName="ads"> Fer una campanya de publicitat (200 €)
-    </label>
-    <br>
-    <p>Preu total: {{ total }} €</p>
+<div class="services">
+  <p>¿Qué quieres hacer?</p>
+  <form [formGroup]="myForm">
+      <label>
+          <input type="checkbox" formControlName="selectedService0"
+              (change)="services[0].selected = myForm.get('selectedService0')?.value">
+          {{services[0].name}} - {{services[0].price}} €
+      </label>
+      <div *ngIf="myForm.get('selectedService0')?.value">
+          <app-panell></app-panell>
+      </div>
+      <label>
+          <input type="checkbox" formControlName="selectedService1"
+              (change)="services[1].selected = myForm.get('selectedService1')?.value">
+          {{services[1].name}} - {{services[1].price}} €
+      </label>
+      <label>
+          <input type="checkbox" formControlName="selectedService2"
+              (change)="services[2].selected = myForm.get('selectedService2')?.value">
+          {{services[2].name}} - {{services[2].price}} €
+      </label>
   </form>
-  
-  <app-panell></app-panell>
+
+
+  <p>Total: {{totalSum}} €</p>
+</div>
