@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,FormControl } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
+import { BudgetListComponent } from '../budget-list/budget-list.component';
 
 interface service {
   name: string;
@@ -15,6 +16,7 @@ interface service {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  
   services: any[] = [
     { name: 'Una página web', price: 500, selected: false },
     { name: 'Una consultoría SEO', price: 300, selected: false },
@@ -23,12 +25,19 @@ export class HomeComponent {
 
   myForm: FormGroup;
   totalpanel = this.BudgetService.totalPrice;
-  
-  constructor(private formBuilder: FormBuilder, private BudgetService: BudgetService) {
+  budgetList: BudgetListComponent = {} as BudgetListComponent;
+
+  constructor(
+    private formBuilder: FormBuilder, 
+    private BudgetService: BudgetService
+  ) {
+
     this.myForm = this.formBuilder.group({
       selectedService0: new FormControl(false),
       selectedService1: new FormControl(false),
-      selectedService2: new FormControl(false)
+      selectedService2: new FormControl(false),
+      budgetName: new FormControl(''),
+      clientName: new FormControl('')
     });
   }
   get selectedService0() {
@@ -46,5 +55,23 @@ export class HomeComponent {
 
     return sum;
   }
+  saveBudget() {
+    const budgetName = this.myForm.get('budgetName')?.value;
+    const clientName = this.myForm.get('clientName')?.value;
+    const service = this.services.find(service => service.selected);
+    const totalPrice = this.totalSum;
+    
+    this.BudgetService.addBudget(budgetName, clientName, service.name, totalPrice);
+    
+    this.myForm.reset({
+      selectedService0: false,
+      selectedService1: false,
+      selectedService2: false,
+      budgetName: '',
+      clientName: ''
+    });
+  }
+  
 }
+
 

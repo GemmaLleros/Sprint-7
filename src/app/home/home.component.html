@@ -1,26 +1,45 @@
-<div class="services">
-  <p>¿Qué quieres hacer?</p>
-  <form [formGroup]="myForm">
-      <label>
-          <input type="checkbox" formControlName="selectedService0"
-              (change)="services[0].selected = myForm.get('selectedService0')?.value">
-          {{services[0].name}} - {{services[0].price}} €
-      </label>
-      <div *ngIf="myForm.get('selectedService0')?.value">
-          <app-panell></app-panell>
-      </div>
-      <label>
-          <input type="checkbox" formControlName="selectedService1"
-              (change)="services[1].selected = myForm.get('selectedService1')?.value">
-          {{services[1].name}} - {{services[1].price}} €
-      </label>
-      <label>
-          <input type="checkbox" formControlName="selectedService2"
-              (change)="services[2].selected = myForm.get('selectedService2')?.value">
-          {{services[2].name}} - {{services[2].price}} €
-      </label>
-  </form>
-
-
-  <p>Total: {{totalSum}} €</p>
+<div class="container">
+    <div class="services">
+        <h2>¿Qué quieres hacer?</h2>
+        <br>
+        <form [formGroup]="myForm">
+            <label>
+                <input type="checkbox" formControlName="selectedService0"
+                    (change)="services[0].selected = myForm.get('selectedService0')?.value">
+                <span>{{services[0].name}}  {{services[0].price}} €</span>
+            </label>
+            <br>
+            <div *ngIf="myForm.get('selectedService0')?.value">
+                <app-panell></app-panell>
+            </div>
+            <label>
+                <input type="checkbox" formControlName="selectedService1"
+                    (change)="services[1].selected = myForm.get('selectedService1')?.value">
+                <span>{{services[1].name}}  {{services[1].price}} €</span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" formControlName="selectedService2"
+                    (change)="services[2].selected = myForm.get('selectedService2')?.value">
+                <span>{{services[2].name}}  {{services[2].price}} €</span>
+            </label>
+            <br><br>
+            <label>
+                Nombre del presupuesto:
+                <input type="text" formControlName="budgetName">
+            </label>
+            <br>
+            <br>
+            <label>
+                Nombre del cliente:
+                <input type="text" formControlName="clientName">
+            </label>
+            <br>
+            <p>Total: {{totalSum}} €</p>
+            <button (click)="saveBudget()">Guardar presupuesto</button>
+        </form>
+    </div>
+    <div class="budget">
+        <app-budget-list></app-budget-list>
+    </div>
 </div>

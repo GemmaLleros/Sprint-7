@@ -1,0 +1,31 @@
+h2 {
+    margin-top: 100px;
+    font-size: 40px;
+    color: #4F8A8B;
+}
+
+p {
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+thead tr {
+    background-color: #4F8A8B;
+    color: #EEEEEE;
+    
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #EEEEEE;
+}

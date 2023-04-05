@@ -1,0 +1,20 @@
+
+<H2>Presupuesto</H2>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre de presupuesto:</th>
+            <th>Cliente:</th>
+            <th>Servicios:</th>
+            <th>Precio total:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let budget of budgets">
+            <td>{{ budget.name }}</td>
+            <td>{{ budget.client }}</td>
+            <td>{{ budget.service }}</td>
+            <td>{{ budget.totalPrice }}</td>
+        </tr>
+    </tbody>
+</table>
