@@ -24,7 +24,6 @@ export class HomeComponent {
   ];
 
   myForm: FormGroup;
-  totalpanel = this.BudgetService.totalPrice;
   budgetList: BudgetListComponent = {} as BudgetListComponent;
 
   constructor(
@@ -45,16 +44,17 @@ export class HomeComponent {
   }
 
   get totalSum() {
-    let sum = this.services.reduce((acc, curr) => {
+    let sumServices = this.services.reduce((acc, curr) => {
       return curr.selected ? acc + curr.price : acc;
     }, 0);
 
     if (this.services[0].selected) {
-      sum += this.BudgetService.totalPrice;
+      sumServices += this.BudgetService.totalPrice;
     }
 
-    return sum;
+    return sumServices;
   }
+
   saveBudget() {
     const budgetName = this.myForm.get('budgetName')?.value;
     const clientName = this.myForm.get('clientName')?.value;
@@ -70,8 +70,13 @@ export class HomeComponent {
       budgetName: '',
       clientName: ''
     });
+    this.services.forEach(service => {
+      service.selected = false;
+    });
+    this.BudgetService.totalPrice = 0;
+     
   }
-  
+    
 }
 
 
