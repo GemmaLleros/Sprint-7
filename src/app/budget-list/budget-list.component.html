@@ -1,5 +1,12 @@
-
-<H2>Presupuesto</H2>
+<h2>Presupuesto</h2>
+<div class="button-container">
+    <input [(ngModel)]="searchTerm" type="text" placeholder="Buscar por nombre de presupuesto">
+    <button (click)="searchBudgetsByName()">Buscar</button>
+    <button (click)="sortByName()" class="btn btn-primary">Ordenar alfabéticamente</button>
+    <button (click)="sortByDate()" class="btn btn-primary">Ordenar por fecha</button>
+    <button (click)="resetOrder()" class="btn btn-primary">Reinicializar orden</button>
+    <button (click)="resetOrderAndSearch()" class="btn btn-primary">Mostrar todos</button>
+</div>
 <table>
     <thead>
         <tr>
@@ -7,14 +14,20 @@
             <th>Cliente:</th>
             <th>Servicios:</th>
             <th>Precio total:</th>
+            <th>Borrar:</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let budget of budgets">
+        <tr *ngFor="let budget of (filteredBudgets.length > 0 ? filteredBudgets : budgets)">
             <td>{{ budget.name }}</td>
             <td>{{ budget.client }}</td>
             <td>{{ budget.service }}</td>
             <td>{{ budget.totalPrice }}</td>
+            <td>
+                <button (click)="deleteBudget(budget)" class="btn btn-danger">
+                    Borrar
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>

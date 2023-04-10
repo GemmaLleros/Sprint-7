@@ -1,5 +1,16 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    flex: 1;
+    margin: 0 5px;
+}
+
 h2 {
-    margin-top: 100px;
+    margin-top: 50px;
     font-size: 40px;
     color: #4F8A8B;
 }
@@ -17,15 +28,15 @@ table {
 thead tr {
     background-color: #4F8A8B;
     color: #EEEEEE;
-    
+
 }
 
 thead th {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
 }
 
 tbody td {
     padding: 12px;
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #4F8A8B; /* Cambiar el color de las líneas de separación */
 }

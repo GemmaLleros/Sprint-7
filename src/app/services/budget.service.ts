@@ -18,7 +18,6 @@ export class BudgetService {
     }
     return this.totalPrice;
   }
-  
 
   addBudget(name: string, client: string, service: string, totalPrice: number) {
     this.budgets.push({
@@ -28,9 +27,13 @@ export class BudgetService {
       totalPrice
     });
   }
-
   getBudgets() {
     return this.budgets;
+  }
+
+  // Método para borrar un presupuesto por su índice
+  deleteBudget(index: number) {
+    this.budgets.splice(index, 1); // Elimina el presupuesto de la lista por su índice
   }
 
 }

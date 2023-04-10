@@ -61,6 +61,13 @@ export class HomeComponent {
     const service = this.services.find(service => service.selected);
     const totalPrice = this.totalSum;
     
+    // Verificar si el totalPrice es igual a cero
+    if (totalPrice === 0) {
+      // Mostrar alerta al usuario
+      alert('Por favor, seleccione al menos un servicio para crear un presupuesto.');
+      return; // Salir del método sin guardar el presupuesto
+    }
+    
     this.BudgetService.addBudget(budgetName, clientName, service.name, totalPrice);
     
     this.myForm.reset({
@@ -70,12 +77,14 @@ export class HomeComponent {
       budgetName: '',
       clientName: ''
     });
+    
+    // Establecer el total del precio a cero después de guardar el presupuesto
     this.services.forEach(service => {
       service.selected = false;
     });
     this.BudgetService.totalPrice = 0;
-     
   }
+  
     
 }
 
